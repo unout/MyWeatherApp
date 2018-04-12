@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/holo_blue_light"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/layout_margin_bottom"
+        android:layout_marginTop="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/item_margin"
+        android:layout_marginLeft="@dimen/item_small_margin"
+        android:layout_marginEnd="@dimen/item_margin"
+        android:layout_marginStart="@dimen/item_small_margin"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDay"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/item_small_margin"
+                android:gravity="center"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/textColor"
+                android:text="day"
+                />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/item_small_margin"
+                android:gravity="center"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/textColor"
+                android:text="time"
+                />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/item_small_margin"
+                android:gravity="center"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/textColor"
+                android:text="date" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/item_margin"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/item_small_margin"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/item_small_margin"
+                        android:gravity="center"
+                        android:text="main"
+                        android:textSize="@dimen/text_size"
+                        android:textColor="@color/textColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvTemp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/item_small_margin"
+                        android:gravity="center"
+                        android:text="temp"
+                        android:textSize="@dimen/text_size"
+                        android:textColor="@color/textColor"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvCity"
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/item_small_margin"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="city"
+                    android:textColor="@color/darkTextColor"
+                    android:textStyle="italic"
+                    android:textSize="@dimen/text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvWind"
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="wind"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/textColor"
+                    />
+
+                <TextView
+                    android:id="@+id/tvHumidity"
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="humidity"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/textColor"
+                    />
+
+                <TextView
+                    android:id="@+id/tvPressure"
+                    android:singleLine="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="pressure"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/textColor"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
