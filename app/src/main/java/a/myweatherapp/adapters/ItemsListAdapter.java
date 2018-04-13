@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +53,5 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();
-    }
-
-    private void setItemSelected(View v) {
-        ((TextView) v.findViewById(R.id.tvMain)).setTextSize(28f);
     }
 }

@@ -3,7 +3,7 @@ package a.myweatherapp.support;
 
 public class Constants {
 
-    public static final String myLogs = "|||||||||||||||||||";
+    public static final String MY_LOGS = "|||||||||||||||||||";
 
     public static final int CODE_SUCCESS = 1;
     public static final int CODE_NETWORK_ERROR = 2;

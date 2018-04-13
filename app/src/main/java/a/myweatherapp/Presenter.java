@@ -5,8 +5,9 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.Arrays;
+import java.util.List;
 
-import a.myweatherapp.model.AppDatabase;
+import a.myweatherapp.model.RoomItem;
 import a.myweatherapp.model.WeatherResponse;
 import a.myweatherapp.support.Constants;
 import retrofit2.Call;
@@ -22,16 +23,22 @@ public class Presenter implements IPresenter {
 
     private IView view;
     private IModel model;
+    private Retrofit retrofit;
 
-    public Presenter(AppDatabase db, Resolver resolver, MyLocationManager locationManager) {
-        model = new Model(db, resolver, locationManager);
+    public Presenter(IModel model) {
+        this.model = model;
+        this.retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     @Override
     public void attachView(IView view) {
         this.view = view;
-        if (model.getItems() != null && model.getItems().size() > 0)
-            view.showItems(model.getItems());
+        List<RoomItem> items = model.getItems();
+        if (items != null && items.size() > 0)
+            view.showItems(items);
     }
 
     @Override
@@ -43,19 +50,14 @@ public class Presenter implements IPresenter {
         if (model.isOnline()) {
             setInitFinished(Constants.CODE_NETWORK_ERROR, null);
         } else {
-            Retrofit restAdapter = new Retrofit.Builder()
-                    .baseUrl(Constants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            Service service = restAdapter.create(Service.class);
+            Service service = retrofit.create(Service.class);
             Call<WeatherResponse> call = service.getWeather(location[LATITUDE], location[LONGITUDE], Constants.APPID);
             call.enqueue(new Callback<WeatherResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<WeatherResponse> call, @NonNull Response<WeatherResponse> response) {
                     model.saveWeather(response, location);
                     setInitFinished(Constants.CODE_SUCCESS, null);
-                    Log.e(Constants.myLogs, response.toString());
+                    Log.e(Constants.MY_LOGS, response.toString());
                 }
 
                 @Override
@@ -71,17 +73,17 @@ public class Presenter implements IPresenter {
     private void setInitFinished(int resultCode, String log) {
         if (view != null) {
             if (resultCode == Constants.CODE_SUCCESS) view.showItems(model.getItems());
-            if (resultCode == Constants.CODE_NETWORK_ERROR) view.showNetworkErrorToast();
-            if (resultCode == Constants.CODE_COMMON_ERROR) view.showCommonErrorToast(log);
+            if (resultCode == Constants.CODE_NETWORK_ERROR) view.showNetworkError();
+            if (resultCode == Constants.CODE_COMMON_ERROR) view.showCommonError(log);
         }
     }
 
     @Override
     public void refreshWeatherData() {
-        if (model.getLocation() != null) {
-//            String[] loc = model.getLocation();loc[LATITUDE], loc[LONGITUDE], loc[DATE], loc[DAY]
-            loadWeather(model.getLocation());
-            Log.e(Constants.myLogs, Arrays.toString(model.getLocation()));
+        String[] location = model.getLocation();
+        if (location != null) {
+            loadWeather(location);
+            Log.e(Constants.MY_LOGS, Arrays.toString(location));
         }
     }
 

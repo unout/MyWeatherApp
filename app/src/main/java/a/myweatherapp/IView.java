@@ -9,7 +9,7 @@ public interface IView {
 
     void showItems(List<RoomItem> items);
 
-    void showNetworkErrorToast();
+    void showNetworkError();
 
-    void showCommonErrorToast(String log);
+    void showCommonError(String log);
 }

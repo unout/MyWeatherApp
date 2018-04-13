@@ -32,8 +32,9 @@ public class WeatherActivity extends AppCompatActivity implements IView {
 
         AppDatabase db = AppDatabase.getDatabase(this);
         MyLocationManager locationManager = new MyLocationManager(this);
+        IModel model = new Model(db, new AndroidResolver(this), locationManager);
 
-        presenter = new Presenter(db, new AndroidResolver(this), locationManager);
+        presenter = new Presenter(model);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -86,12 +87,12 @@ public class WeatherActivity extends AppCompatActivity implements IView {
     }
 
     @Override
-    public void showNetworkErrorToast() {
+    public void showNetworkError() {
         Toast.makeText(this, "Network is not available", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void showCommonErrorToast(String log) {
+    public void showCommonError(String log) {
         Toast.makeText(this, "Error: " + log, Toast.LENGTH_LONG).show();
     }
 

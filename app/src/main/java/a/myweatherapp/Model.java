@@ -27,12 +27,13 @@ public class Model implements IModel {
 
     @Override
     public void saveWeather(Response<WeatherResponse> response, String[] location) {
-        if (response.body() != null) {
+        WeatherResponse weatherResponse = response.body();
+        if (weatherResponse != null) {
             db.itemDAO().insert(new RoomItem(
-                    response.body().getWeatherElements().get(0),
-                    response.body().getMainParameters(),
-                    response.body().getWind(),
-                    response.body().getCity(),
+                    weatherResponse.getWeatherElements().get(0),
+                    weatherResponse.getMainParameters(),
+                    weatherResponse.getWind(),
+                    weatherResponse.getCity(),
                     location));
         }
     }
