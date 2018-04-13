@@ -80,6 +80,5 @@ public class WeatherResponse {
     "id": 625144,
     "name": "Minsk",
     "cod": 200
-
      */
 }

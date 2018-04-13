@@ -28,8 +28,11 @@ public class RoomItem {
     @ColumnInfo(name = "date")
     private String date;
 
-    @ColumnInfo(name = "weatherMain")
-    private String weatherMain;
+    @ColumnInfo(name = "description")
+    private String description;
+
+    @ColumnInfo(name = "icon")
+    private String icon;
 
     @ColumnInfo(name = "temp")
     private int temp;
@@ -52,9 +55,10 @@ public class RoomItem {
 
     public RoomItem() {}
 
-    public RoomItem(String main, MainParameters params, Wind wind, String city, String[] location) {
+    public RoomItem(WeatherElement main, MainParameters params, Wind wind, String city, String[] location) {
         this.city = city;
-        this.weatherMain = main;
+        this.icon = main.getIcon();
+        this.description = main.getDescription();
         this.temp = params.getTemp();
         this.pressure = params.getPressure();
         this.humidity = params.getHumidity();
@@ -87,8 +91,8 @@ public class RoomItem {
         return date;
     }
 
-    public String getWeatherMain() {
-        return weatherMain;
+    public String getDescription() {
+        return description;
     }
 
     public int getTemp() {
@@ -127,8 +131,8 @@ public class RoomItem {
         this.date = date;
     }
 
-    public void setWeatherMain(String weatherMain) {
-        this.weatherMain = weatherMain;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setTemp(int temp) {
@@ -169,5 +173,13 @@ public class RoomItem {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

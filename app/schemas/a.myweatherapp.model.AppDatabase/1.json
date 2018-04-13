@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "528ef67fd0d9dc2b34d077434527f37c",
+    "identityHash": "b1ba5400fe3aa105dbd7f8c21d0804e7",
     "entities": [
       {
         "tableName": "weatherdb",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `city` TEXT, `latitude` TEXT, `longitude` TEXT, `date` TEXT, `weatherMain` TEXT, `temp` INTEGER NOT NULL, `pressure` INTEGER NOT NULL, `humidity` INTEGER NOT NULL, `windSpeed` INTEGER NOT NULL, `windDir` INTEGER NOT NULL, `day` TEXT, `time` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `city` TEXT, `latitude` TEXT, `longitude` TEXT, `date` TEXT, `description` TEXT, `icon` TEXT, `temp` INTEGER NOT NULL, `pressure` INTEGER NOT NULL, `humidity` INTEGER NOT NULL, `windSpeed` INTEGER NOT NULL, `windDir` INTEGER NOT NULL, `day` TEXT, `time` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -39,8 +39,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "weatherMain",
-            "columnName": "weatherMain",
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "icon",
+            "columnName": "icon",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -99,7 +105,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"528ef67fd0d9dc2b34d077434527f37c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b1ba5400fe3aa105dbd7f8c21d0804e7\")"
     ]
   }
 }

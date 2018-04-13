@@ -10,4 +10,5 @@ public class Constants {
     public static final int CODE_COMMON_ERROR = 3;
     public static final String APPID = "151e64a5f5b7d66e13276e72a2fc5b25";
     public static final String BASE_URL = "http://api.openweathermap.org";
+    public static final String ICON_URL = "http://openweathermap.org/img/w/";
 }

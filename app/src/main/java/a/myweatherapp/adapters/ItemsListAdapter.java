@@ -35,10 +35,8 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         holder.setHolder(items.get(getItemCount() - position - 1));
         if (v.isSelected()) {
             v.setBackgroundColor(ResourcesCompat.getColor(v.getResources(), R.color.colorPrimary, null));
-//            v.setMinimumHeight();
         } else {
             v.setBackgroundColor(ResourcesCompat.getColor(v.getResources(), R.color.colorPrimaryDark, null));
-            v.setMinimumHeight(v.getHeight());
         }
     }
 

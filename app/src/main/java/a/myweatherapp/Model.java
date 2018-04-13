@@ -29,7 +29,7 @@ public class Model implements IModel {
     public void saveWeather(Response<WeatherResponse> response, String[] location) {
         if (response.body() != null) {
             db.itemDAO().insert(new RoomItem(
-                    response.body().getWeatherElements().get(0).getDescription(),
+                    response.body().getWeatherElements().get(0),
                     response.body().getMainParameters(),
                     response.body().getWind(),
                     response.body().getCity(),

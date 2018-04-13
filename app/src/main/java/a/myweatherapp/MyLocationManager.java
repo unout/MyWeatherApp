@@ -10,12 +10,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.text.format.DateFormat;
-import android.util.Log;
 
 import java.lang.ref.WeakReference;
 import java.util.Date;
-
-import a.myweatherapp.support.Constants;
 
 import static android.content.Context.LOCATION_SERVICE;
 
@@ -38,7 +35,6 @@ public class MyLocationManager implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.e(Constants.myLogs, "LocationChanged " + location.toString());
         if (lastLoc != null) {
             lastLoc = location;
         }
@@ -77,7 +73,6 @@ public class MyLocationManager implements LocationListener {
     }
 
     private void setLastLoc() {
-        Log.e(Constants.myLogs, "setLastLoc : enter");
         if (ActivityCompat.checkSelfPermission(contextWeakReference.get(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(contextWeakReference.get(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -97,6 +92,5 @@ public class MyLocationManager implements LocationListener {
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (location != null)
             lastLoc = location;
-        Log.e(Constants.myLogs, "setLastLoc : exit");
     }
 }

@@ -1,14 +1,18 @@
 package a.myweatherapp.adapters.viewholders;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import a.myweatherapp.R;
 import a.myweatherapp.model.RoomItem;
+import a.myweatherapp.support.Constants;
 
 public class ItemViewHolder extends com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder {
 
-    private static final String CELSIUM_SIGN = " \u2103";
+    private static final String CELSIUS_SIGN = " \u2103";
     private static final String PERCENT_SIGN = " %";
     private static final String SPEED_IN_M_S = " m/s";
     private static final String PRESSURE_IN_MM_HG = " mm Hg";
@@ -22,10 +26,10 @@ public class ItemViewHolder extends com.thoughtbot.expandablerecyclerview.viewho
     private TextView pressure;
     private TextView day;
     private TextView time;
+    private ImageView icon;
 
     public ItemViewHolder(View itemView) {
         super(itemView);
-
         date = itemView.findViewById(R.id.tvDate);
         main = itemView.findViewById(R.id.tvMain);
         day = itemView.findViewById(R.id.tvDay);
@@ -35,26 +39,19 @@ public class ItemViewHolder extends com.thoughtbot.expandablerecyclerview.viewho
         wind = itemView.findViewById(R.id.tvWind);
         humidity = itemView.findViewById(R.id.tvHumidity);
         pressure = itemView.findViewById(R.id.tvPressure);
-//        LinearLayout ll = itemView.findViewById(R.id.item_layout);
-//        if () {
-//            ll.setBackgroundColor(ResourcesCompat.getColor(itemView.getResources(), R.color.colorPrimary, null));
-//            Log.e(Constants.myLogs, "Change this World");
-//        } else {
-//            ll.setBackgroundColor(ResourcesCompat.getColor(itemView.getResources(), R.color.colorPrimaryDark, null));
-//            Log.e(Constants.myLogs, "And leave. You should leave.");
-//        }
+        icon = itemView.findViewById(R.id.ivIcon);
     }
 
     public void setHolder(RoomItem item) {
 
         date.setText(item.getDate());
-        main.setText(item.getWeatherMain());
+        main.setText(item.getDescription());
         day.setText(item.getDay());
         time.setText(item.getTime());
 
         city.setText(item.getCity());
 
-        String temp = Integer.toString(item.getTemp()) + CELSIUM_SIGN;
+        String temp = Integer.toString(item.getTemp()) + CELSIUS_SIGN;
         temperature.setText(temp);
 
         String hum = Integer.toString(item.getHumidity()) + PERCENT_SIGN;
@@ -65,5 +62,10 @@ public class ItemViewHolder extends com.thoughtbot.expandablerecyclerview.viewho
 
         String press = Integer.toString(item.getPressure()) + PRESSURE_IN_MM_HG;
         pressure.setText(press);
+
+        String url = Constants.ICON_URL + item.getIcon() + ".png";
+        Glide.with(this.itemView.getContext())
+                .load(url)
+                .into(icon);
     }
 }

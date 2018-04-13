@@ -29,13 +29,7 @@ public class WeatherActivity extends AppCompatActivity implements IView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        Glide.with(this)
-//                .load(url)
-//                .centerCrop()
-//                .placeholder(R.drawable.no_image)
-//                .into(myImageView);
+
         AppDatabase db = AppDatabase.getDatabase(this);
         MyLocationManager locationManager = new MyLocationManager(this);
 
