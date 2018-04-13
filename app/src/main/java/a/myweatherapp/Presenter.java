@@ -23,7 +23,7 @@ public class Presenter implements IPresenter {
 
     private IView view;
     private IModel model;
-    private Retrofit retrofit;
+    private final Retrofit retrofit;
 
     public Presenter(IModel model) {
         this.model = model;

@@ -15,7 +15,7 @@ import a.myweatherapp.model.RoomItem;
 
 public class ItemsListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
-    private List<RoomItem> items = new ArrayList<>();
+    private final List<RoomItem> items = new ArrayList<>();
 
     public ItemsListAdapter() {}
 
@@ -23,7 +23,6 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.view_rv_item, parent, false);
-//        view.getHeight();
         return new ItemViewHolder(view);
     }
 

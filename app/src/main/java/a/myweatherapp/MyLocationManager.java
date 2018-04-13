@@ -61,11 +61,10 @@ public class MyLocationManager implements LocationListener {
             location[LONGITUDE] = String.valueOf(lastLoc.getLongitude());
             location[LATITUDE] = String.valueOf(lastLoc.getLatitude());
             location[DATE] = (String) DateFormat.format("dd.MM.yy", date);
-            location[DAY]  = (String) DateFormat.format("EEEE", date);
+            location[DAY] = (String) DateFormat.format("EEEE", date);
             location[TIME] = (String) DateFormat.format("kk:mm:ss", date);
             return location;
-        }
-        else return null;
+        } else return null;
     }
 
     private boolean checkEnabled() {
