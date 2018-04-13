@@ -1,8 +1,11 @@
 package a.myweatherapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +36,6 @@ public class WeatherActivity extends AppCompatActivity implements IView {
 //                .centerCrop()
 //                .placeholder(R.drawable.no_image)
 //                .into(myImageView);
-
         AppDatabase db = AppDatabase.getDatabase(this);
         MyLocationManager locationManager = new MyLocationManager(this);
 
@@ -55,6 +57,26 @@ public class WeatherActivity extends AppCompatActivity implements IView {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         presenter.attachView(this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder
+                .setTitle(R.string.dialog_title)
+                .setMessage(R.string.dialog_message)
+                .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        getApplicationContext().startActivity(
+                                new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                })
+                .create()
+                .show();
     }
 
     @Override

@@ -86,8 +86,9 @@ public class MyLocationManager implements LocationListener {
             // public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            contextWeakReference.get().startActivity(new Intent(
-                    android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            contextWeakReference.get().startActivity(
+                    new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             return;
         }
         locationManager.requestLocationUpdates(

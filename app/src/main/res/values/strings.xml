@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyWeatherApp</string>
+    <string name="dialog_title">Important information</string>
+    <string name="dialog_message">This app use your network location to provide you weather.</string>
+    <string name="dialog_cancel">OK</string>
+    <string name="dialog_ok">Go to location services</string>
 </resources>
